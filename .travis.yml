@@ -2,10 +2,10 @@ dist: bionic
 before_install:
   sudo apt-get update -q;
   sudo apt-get install unzip wget dos2unix curl -y;
-  dos2unix scripts/bash/deploy.sh;
-  chmod +x scripts/bash/deploy.sh;
-  dos2unix scripts/bash/run.sh;
-  chmod +x scripts/bash/run.sh;
+  dos2unix deploy.sh;
+  chmod +x deploy.sh;
+  dos2unix run.sh;
+  chmod +x run.sh;
 install: 
   - sudo apt-get -y install build-essential 
 script:
