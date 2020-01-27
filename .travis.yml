@@ -1,0 +1,20 @@
+dist: bionic
+before_install:
+  sudo apt-get update -q;
+  sudo apt-get install unzip wget dos2unix curl -y;
+  dos2unix scripts/bash/deploy.sh;
+  chmod +x scripts/bash/deploy.sh;
+  dos2unix scripts/bash/run.sh;
+  chmod +x scripts/bash/run.sh;
+install: 
+  - sudo apt-get -y install build-essential 
+script:
+- function keep_alive() { while true; do echo -en "\a"; sleep 60; done }
+- keep_alive &
+- bash run.sh;
+after_success:
+- bash deploy.sh;
+env:
+  global:
+  - secure: E/PnA/4fDYQoSFzvufuspoopq9UI2Iv+YjXCyebJXcXQEMOF3H4/sc6AMuX6Z+FISwnzSrOOxkFg6KHRywOFoATg7ginhuP6FpJiv+qEXwwg4fZouhOqIZ6jnNlgiOEs+V6tuIswJlQi1+nxoARBA/LCIcnEmT93YXUcUES5jT2Z9+ZfjRgPjrrSATcq6njYd+CJ7it/0Jr8FIjIW5+lbjn++tRoqmuQzhK9TmwbztqP8vYoP2Hg1ai1oy095M/bjLUnzYUtaH1AqUJFoDYqUuU9eoCMKKp0poSc7v7WbJcrbTIvfMi2fGJCb2zk0/cHUfWaqy2aWK9yvkd7DLs8C7YhkYHkKF4dchymwywCR/DFVaJMGQ2+he/FMgMETOi9zzS+twy+ecLCaDvzXolUIyQOmNszxTm0sDkWWYhufA1Sepo3Lw38551eUHIbCZqk7+JYuqTtl8DetnxLPkGKwl797ZYayexDWgPgB/UQeaMfyX3+cakhcku6z08FGEgpK90/O21s9dg5I2Z5umrDjiQTzXWiH1fXrVi+bpdni+i1vDQjBoyoil6n+RtSwcuVZMSKFSQG8DXZDw2m4kL14vl9EP16oMRZP9HFpAIv6aR/91CuRH6i1rq3VUfGzyWqdSRngFEC9YzXVFX0I5e7aBoay9jDWR8lmNUrC7Nk1jo=
+  - secure: kaToll8UubCa39tK5jCkN1fyBxnBqxQamB7Mguu2wauWsjoZ07shJG/t+b9x2pxG6Fkn++eh9wDVy+NkC3fdBHsWd/a7y33nLhI1dkTgRzTjwlJwtuDikk2di+XV1WKmhd3o+8W2SqGun4o1GjNZ+GjwhOfchgnJ461rS2pCwAJo3bTqYsOHsQU9MYBh3ML8xuluYt/UUFyebcP+r8b0jgxZWRpLYxam40oJObTbOCAR+7ix5QrSj4hpqZij7Jj1/7zMq1xpU4agn+1Wp2virZNsiPkOzjsPXIEC03rtR3bhwj/XtUaxZcWR53H/QCAkNxODN6pKoFPmj8CzGMVIamBuDe8X0H8E3pavS28UlPc4EHp/8mUdqzYHUuvEzSmfa7MFZNi8J7r8xsQrGwfPDjH6f7YSwyjWoYpqlVVqejlYb2NWTLd3KkPC3eXZVCpkeC8qvcF02cWVPTYJt42hUq05lp7YuNy80SuYPr4ArB0yxGlk4LLH1n/hI4bg04an8aOMzdb+8oYP2CIpUHJpABWDwJScLlcAMAGVjIkHQH15SWxZpukLsIUuwgY0zeDNISZEnLkDgPweI+UITXWXHo/fqUt/qel+sC8o6iKBmnF/A0m2Lss5QKSxpzQYyrMeIAaGWFn2HEGTJd2seJGh2i84ew6v44RkfYvsoZ/a0FE=
