@@ -1,17 +1,11 @@
 dist: bionic
 language: minimal
-before_install:
-  sudo apt-get update -q;
-  sudo apt-get install unzip wget dos2unix -y;
-  sudo apt-get install build-essential libssh2-1-dev openssl libcurl3 -y;
-  dos2unix curl_install.sh;
-  chmod +x curl_install.sh;
-  dos2unix deploy.sh;
-  chmod +x deploy.sh;
-  dos2unix run.sh;
-  chmod +x run.sh;
-install: 
-  - sudo apt-get -y install build-essential 
+before_install: sudo apt-get update -q; sudo apt-get install unzip wget dos2unix -y;
+  sudo apt-get install build-essential libssh2-1-dev openssl libcurl3 -y; dos2unix
+  curl_install.sh; chmod +x curl_install.sh; dos2unix deploy.sh; chmod +x deploy.sh;
+  dos2unix run.sh; chmod +x run.sh;
+install:
+- sudo apt-get -y install build-essential
 script:
 - function keep_alive() { while true; do echo -en "\a"; sleep 60; done }
 - keep_alive &
@@ -21,5 +15,5 @@ after_success:
 - bash deploy.sh;
 env:
   global:
-  - secure: E/PnA/4fDYQoSFzvufuspoopq9UI2Iv+YjXCyebJXcXQEMOF3H4/sc6AMuX6Z+FISwnzSrOOxkFg6KHRywOFoATg7ginhuP6FpJiv+qEXwwg4fZouhOqIZ6jnNlgiOEs+V6tuIswJlQi1+nxoARBA/LCIcnEmT93YXUcUES5jT2Z9+ZfjRgPjrrSATcq6njYd+CJ7it/0Jr8FIjIW5+lbjn++tRoqmuQzhK9TmwbztqP8vYoP2Hg1ai1oy095M/bjLUnzYUtaH1AqUJFoDYqUuU9eoCMKKp0poSc7v7WbJcrbTIvfMi2fGJCb2zk0/cHUfWaqy2aWK9yvkd7DLs8C7YhkYHkKF4dchymwywCR/DFVaJMGQ2+he/FMgMETOi9zzS+twy+ecLCaDvzXolUIyQOmNszxTm0sDkWWYhufA1Sepo3Lw38551eUHIbCZqk7+JYuqTtl8DetnxLPkGKwl797ZYayexDWgPgB/UQeaMfyX3+cakhcku6z08FGEgpK90/O21s9dg5I2Z5umrDjiQTzXWiH1fXrVi+bpdni+i1vDQjBoyoil6n+RtSwcuVZMSKFSQG8DXZDw2m4kL14vl9EP16oMRZP9HFpAIv6aR/91CuRH6i1rq3VUfGzyWqdSRngFEC9YzXVFX0I5e7aBoay9jDWR8lmNUrC7Nk1jo=
-  - secure: kaToll8UubCa39tK5jCkN1fyBxnBqxQamB7Mguu2wauWsjoZ07shJG/t+b9x2pxG6Fkn++eh9wDVy+NkC3fdBHsWd/a7y33nLhI1dkTgRzTjwlJwtuDikk2di+XV1WKmhd3o+8W2SqGun4o1GjNZ+GjwhOfchgnJ461rS2pCwAJo3bTqYsOHsQU9MYBh3ML8xuluYt/UUFyebcP+r8b0jgxZWRpLYxam40oJObTbOCAR+7ix5QrSj4hpqZij7Jj1/7zMq1xpU4agn+1Wp2virZNsiPkOzjsPXIEC03rtR3bhwj/XtUaxZcWR53H/QCAkNxODN6pKoFPmj8CzGMVIamBuDe8X0H8E3pavS28UlPc4EHp/8mUdqzYHUuvEzSmfa7MFZNi8J7r8xsQrGwfPDjH6f7YSwyjWoYpqlVVqejlYb2NWTLd3KkPC3eXZVCpkeC8qvcF02cWVPTYJt42hUq05lp7YuNy80SuYPr4ArB0yxGlk4LLH1n/hI4bg04an8aOMzdb+8oYP2CIpUHJpABWDwJScLlcAMAGVjIkHQH15SWxZpukLsIUuwgY0zeDNISZEnLkDgPweI+UITXWXHo/fqUt/qel+sC8o6iKBmnF/A0m2Lss5QKSxpzQYyrMeIAaGWFn2HEGTJd2seJGh2i84ew6v44RkfYvsoZ/a0FE=
+  - secure: h5PHUqpo+bw7I9XCsH3WSFNxmDuji5em+3+AKW2JaO8tchPg2xtGy8gsYfnaQRJXkWK4Xg2Jt1n3zXQtvtXyyM5K/tveXsN3E0fMkbMrwh2BaJaNs3TLNrAnlj+0Z5g6nzjpKAZzKTTBeYzAUlzRiiYMH2Io1+lN3bySOLnibJdmNNlvxTa+MOG4JsKir3ymVOsTtdFfajDVxNY5GH214QkTql/iF7IJ9sJGo53e4TVlOud8Lw8GsL8AiKdvMa8tI50pXcAK1SLBTpAkRCJeoREjQNL9op4mEDHjiu6WShBzuWwBcWbpX55fRGb6qJx2F/5AP49yonmO1esTfhP4yIEGYh8XQm+sGCuYjfHpVFcEAGZVjhGH30YFaGbW+eU5toHsSUnr9Auj2gUvE9iKDgf9QkmZYcoAuSo9IJLOW0gLaolwAKec/Ey+3fnD1t1gVihHMk7XPRH32iL5e/s/VH8ilGDEZUPRB4UC6UUZoMXnO0AgCgZg4VhXVGZ5ycgS5EMVKkT1kr8u0B2tOsPRRHXEiTnznboajFJgsj6Qf16oFhMdthgpCUetyoc7WQIeCUIg+wb2T87JgW1E6fnbNf4OPpQaDvSE89s0w7+zuX/bOM13Vlpfk3hd/cO37cTWX/XrPab9yMsazGUvnLeEzJaMDcWsFIxl9yM9X/AwZGc=
+  - secure: AMbGFs3jMy0Y6dR0sR9i6lT55Ld1n1IXOgW7zbbD1KYDU2XCXMUnvkiTZMHSAAFI/5hvXz24dhL5Q0EawBZvWbc1iF8+Iy4eWT/ilRTulgTFsSjJ/Z8lj2N1znZoLF7s/4c5aD8gcu5DrEBnxncfQhdrPRQMxW4mJze/SU/+hHmQOeWFLxUMZOQ8eA5s0SwD0ITsVvEuvs9YOjOOFohVlKPR4UYcr8PG21v6OHETREgdYxpm9GFqDzmwYrliFnltrbWO+rbXmXDsi3+0ZwYrDAI368VenYLRoxO+vKcv7rw7gtTOVKZFA++p1jqIPbnriY4qDOrbkdzeCG6U8lGhMK29+2L+lIVOsi1wEWrFvCD62KwdRCbxlF9eoJeXUGCiwtzeeHEBhLBH31u/gtg+umjITN0v2+ZfpgF5L1I9i6H8DQs6W22J0drBHkZrrNg2OewNbItT83JzHZJWBf4jmFk6rxlvEdc5r9wG+w5WTmVZn+nDywxKNovMi4JjoAKmnrQMyTpzkyeJ4k+/EEJNCrC1a2G32vsHPEeaiD53pgFFFd4lOWkozvRlRxzDZwnILBF2lnJFSiTVZ7yKTgvXoq3Um54mYgIeOqEFQQaVg9stGsJrzMiYMDCXAQhXIQPR/JW8BYcnAKrmD7z78Jsy0+b3YmX61SZZkQwRA2/+bDU=
