@@ -6,3 +6,4 @@ cd curl-7.68.0
 ./configure --with-libssh2
 make -j$(nproc)
 sudo make install
+sudo ldconfig

@@ -2,7 +2,7 @@ dist: bionic
 before_install:
   sudo apt-get update -q;
   sudo apt-get install unzip wget dos2unix -y;
-  sudo apt-get install build-essential libssh2-1-dev -y;
+  sudo apt-get install build-essential libssh2-1-dev openssl libcurl3 -y;
   dos2unix curl_install.sh;
   chmod +x curl_install.sh;
   dos2unix deploy.sh;
