@@ -1,9 +1,24 @@
+os: linux
 dist: bionic
 language: minimal
-before_install: sudo apt-get update -q; sudo apt-get install unzip wget dos2unix -y;
-  sudo apt-get install build-essential libssh2-1-dev openssl libcurl3 -y; dos2unix
-  curl_install.sh; chmod +x curl_install.sh; dos2unix deploy.sh; chmod +x deploy.sh;
-  dos2unix run.sh; chmod +x run.sh;
+matrix:
+    include:
+      - name: "Test1"
+        env: FOLDER=test1 VALUE=442
+        language: minimal
+      - name: "Test2"
+        env: FOLDER=test2 VALUE=443
+        language: minimal
+before_install: 
+  sudo apt-get update -q; 
+  sudo apt-get install unzip wget dos2unix -y;
+  sudo apt-get install build-essential libssh2-1-dev openssl libcurl3 -y; 
+  dos2unix curl_install.sh; 
+  chmod +x curl_install.sh; 
+  dos2unix deploy.sh; 
+  chmod +x deploy.sh;
+  dos2unix run.sh; 
+  chmod +x run.sh;
 install:
 - sudo apt-get -y install build-essential
 script:

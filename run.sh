@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "everything is ok2!" > "$HOME"/test.txt
+echo "everything is ok with code: $VALUE!" > "$HOME"/test.txt
